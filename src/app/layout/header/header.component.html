@@ -1,0 +1,94 @@
+<!-- Header
+    ============================================= -->
+<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+
+  <div id="header-wrap">
+
+    <div class="container clearfix">
+
+      <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+      <!-- Logo
+                ============================================= -->
+      <div id="logo">
+        <a href="index.html" class="standard-logo" data-dark-logo="../../assets/images/logo-dark.png"><img src="../../assets/images/logo-dark.png" alt="Canvas Logo"></a>
+        <a href="index.html" class="retina-logo" data-dark-logo="../../assets/images/logo-dark@2x.png"><img src="../../assets/images/logo@2x.png" alt="Canvas Logo"></a>
+      </div><!-- #logo end -->
+
+      <div id="top-account" [ngClass]="{'dropdown': !isDropdownOpen, 'dropdown open': isDropdownOpen}">
+        <a href="#"  (click)="isDropdownOpen = !isDropdownOpen;"
+           class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+          <li><a [routerLink]=" ['./profile']" >Profile</a></li>
+          <li><a href="#">Messages <span class="badge">5</span></a></li>
+          <li><a href="#">Settings</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Logout <i class="icon-signout"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- Primary Navigation
+                ============================================= -->
+      <nav id="primary-menu" class="dark">
+
+        <ul>
+          <li class="current"><a href="index.html"><div>Home</div></a></li>
+          <li><a [routerLink]=" ['./register-user'] "><div>Devenir TalentWorker</div></a></li>
+          <li><a [routerLink]=" ['./login'] "><div>Log in</div></a></li>
+          <li><a [routerLink]=" ['./list-users-search'] "><div>TalentWorkers</div></a></li>
+          <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
+          <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>
+        </ul>
+
+        <!-- Top Cart
+                    =============================================
+        <div id="top-cart">
+          <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
+          <div class="top-cart-content">
+            <div class="top-cart-title">
+              <h4>They need your talent !</h4>
+            </div>
+            <div class="top-cart-items">
+              <div class="top-cart-item clearfix">
+                <div class="top-cart-item-image">
+                  <a href="#"><img src="../../assets/images/shop/small/1.jpg" alt="Blue Round-Neck Tshirt" /></a>
+                </div>
+                <div class="top-cart-item-desc">
+                  <a href="#">Henry - Delivery</a>
+                  <span class="top-cart-item-price">60€</span>
+                  <span class="top-cart-item-quantity">4h</span>
+                </div>
+              </div>
+              <div class="top-cart-item clearfix">
+                <div class="top-cart-item-image">
+                  <a href="#"><img src="../../assets/images/shop/small/6.jpg" alt="Light Blue Denim Dress" /></a>
+                </div>
+                <div class="top-cart-item-desc">
+                  <a href="#">James - Math course</a>
+                  <span class="top-cart-item-price">40€</span>
+                  <span class="top-cart-item-quantity">3h</span>
+                </div>
+              </div>
+            </div>
+            <div class="top-cart-action clearfix">
+              <span class="fleft top-checkout-price">100€ (7h)</span>
+              <button class="button button-3d button-small nomargin fright">Job Details</button>
+            </div>
+          </div>
+        </div> #top-cart end -->
+
+        <!-- Top Search
+                    ============================================= -->
+        <div id="top-search">
+          <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+          <form action="search.html" method="get">
+            <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+          </form>
+        </div><!-- #top-search end -->
+
+      </nav><!-- #primary-menu end -->
+    </div>
+
+  </div>
+
+</header><!-- #header end -->

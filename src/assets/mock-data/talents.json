@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "Ménage"
+    },
+    {
+      "id": "2",
+      "name": "Déménagement"
+    },
+    {
+      "id": "3",
+      "name": "Bricolage"
+    },
+    {
+      "id": "4",
+      "name": "Livraison"
+    },
+    {
+      "id": "5",
+      "name": "Baby-Sitting"
+    },
+    {
+      "id": "6",
+      "name": "Cours à domicile/Coaching"
+    },
+    {
+      "id": "7",
+      "name": "Transport de colis"
+    },
+    {
+      "id": "8",
+      "name": "Cuisine"
+    },
+    {
+      "id": "9",
+      "name": "Montage de meuble"
+    },
+    {
+      "id": "10",
+      "name": "Coiffure/Soin/Beauté"
+    }
+  ]
+}

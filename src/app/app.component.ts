@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+/*
+ * Angular 2 decorators and services
+ */
+import {Component, ViewEncapsulation} from '@angular/core';
 
+import { AppState } from './app.service';
+
+/*
+ * App Component
+ * Top Level Component
+ */
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [
+    './app.component.css'
+  ],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'app';
+
+
+ export class AppComponent {
+  name = 'Talented';
+
+
 }
+

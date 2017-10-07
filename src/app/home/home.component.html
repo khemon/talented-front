@@ -1,0 +1,289 @@
+<section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+  <div class="slider-parallax-inner">
+
+    <div class="swiper-container swiper-parent">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide " style="background-image: url('../../assets/images/slider/rev/ken-2.jpg');">
+          <div class="container clearfix">
+            <div class="slider-caption slider-caption-center col-md-">
+              <h2 data-caption-animate="fadeInUp" class="talented_title">Talented</h2>
+              <p data-caption-animate="fadeInUp" data-caption-delay="200" class="talented_title">L'application qui vous rend votre temps, et vous fait gagner de l'argent</p>
+              <!--<form action="#" method="get" role="form" class="divcenter nobottommargin">
+                <div class="input-group input-group-lg">
+                  <input type="text" class="form-control" placeholder="Search a service">
+                  <span class="input-group-btn">
+								    <button class="btn btn-danger" type="button">Search</button>
+							    </span>
+                </div>
+              </form>-->
+
+              <ng-select [allowClear]="true"
+                         [items]="jobTypes"
+                         [disabled]="disabled"
+                         (data)="refreshValue($event)"
+                         (selected)="selected($event)"
+                         (removed)="removed($event)"
+                         (typed)="typed($event)"
+                         placeholder="De quel service avez vous besoin ?">
+              </ng-select>
+
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide dark">
+          <div class="container clearfix">
+            <div class="slider-caption slider-caption-center">
+              <h2 data-caption-animate="fadeInUp">Fast, Simple and secured</h2>
+              <p data-caption-animate="fadeInUp" data-caption-delay="200">
+                TalentedApp trouve en quelques minutes un talentWorker à proximité pour vous rendre votre service
+                et vous rendre la vie plus facile
+              </p>
+            </div>
+          </div>
+          <div class="container clearfix">
+            <div class="slider-caption slider-caption-center">
+              <h2 data-caption-animate="fadeInUp">Fast, Simple and secured</h2>
+              <p data-caption-animate="fadeInUp" data-caption-delay="200">
+                TalentedApp trouve en quelques minutes un talentWorker à proximité pour vous rendre votre service
+                et vous rendre la vie plus facile
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+      <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+    </div>
+
+    <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i
+      class="icon-angle-down infinite animated fadeInDown"></i></a>
+
+  </div>
+</section>
+<section>
+<div id="content">
+
+  <div class="container clearfix">
+
+  <div class="content-wrap col-md-push-1">
+
+
+  <div class="col_one_fourth nobottommargin">
+    <div class="feature-box fbox-center fbox-light fbox-effect nobottomborder">
+      <div class="fbox-icon">
+        <a href="#"><i class="i-alt noborder icon-wallet"></i></a>
+      </div>
+      <h3>Paiement en ligne<span class="subtitle">Credit Cards &amp; PayPal Support</span></h3>
+    </div>
+  </div>
+
+  <div class="col_one_fourth nobottommargin">
+    <div class="feature-box fbox-center fbox-light fbox-effect nobottomborder">
+      <div class="fbox-icon">
+        <a href="#"><i class="i-alt noborder icon-megaphone"></i></a>
+      </div>
+      <h3>Notification instantannée<span class="subtitle">Email &amp; SMS Support</span></h3>
+    </div>
+  </div>
+
+  <div class="col_one_fourth nobottommargin col_last">
+    <div class="feature-box fbox-center fbox-light fbox-effect nobottomborder">
+      <div class="fbox-icon">
+        <a href="#"><i class="i-alt noborder icon-fire"></i></a>
+      </div>
+      <h3>Création d'opportunités<span class="subtitle">De nouveaux services tous les jours</span></h3>
+    </div>
+  </div>
+    </div>
+  <div class="clear"></div><div class="line bottommargin-lg"></div>
+  <div class="container clearfix">
+
+    <div class="col_one_third bottommargin-sm center">
+      <img data-animate="fadeInLeft" src="../../assets/images/services/iphone6.png" alt="Iphone">
+    </div>
+
+    <div class="col_two_third bottommargin-sm col_last">
+
+      <div class="heading-block topmargin-sm">
+        <h3>Télécharger l'application Mobile & Tablet.</h3>
+      </div>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed
+        quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati,
+        ullam, laboriosam!</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia.
+        Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam.</p>
+
+      <a href="#" class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">Learn
+        more</a>
+
+    </div>
+
+  </div>
+    <div class="content-wrap">
+      <div class="col_one_third nobottommargin">
+        <div class="feature-box media-box">
+          <div class="fbox-media">
+            <img src="../../assets/images/services/1.jpg" alt="Why choose Us?">
+          </div>
+          <div class="fbox-desc">
+            <h3>Pourquoi Talented?<span class="subtitle">Faites le choix de la fiabilité</span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col_one_third nobottommargin">
+        <div class="feature-box media-box">
+          <div class="fbox-media">
+            <img src="../../assets/images/services/2.jpg" alt="Why choose Us?">
+          </div>
+          <div class="fbox-desc">
+            <h3>Notre mission<span class="subtitle">Vous trouvez une personne compétente & disponible à proximité de chez vous</span></h3>
+            <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col_one_third nobottommargin col_last">
+        <div class="feature-box media-box">
+          <div class="fbox-media">
+            <img src="../../assets/images/services/3.jpg" alt="Why choose Us?">
+          </div>
+          <div class="fbox-desc">
+            <h3>Ce que nous faisont<span class="subtitle">TalenteApp vous fait gagner du temps et de l'argent</span></h3>
+            <p>Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section parallax dark nobottommargin"
+       style="background-image: url('../../assets/images/services/home-testi-bg.jpg'); padding: 100px 0;"
+       data-stellar-background-ratio="0.4">
+
+    <div class="heading-block center">
+      <h3>Ils ont utilisé Talented</h3>
+    </div>
+
+    <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+      <div class="flexslider">
+        <div class="slider-wrap">
+          <div class="slide flex-active-slide">
+            <div class="testi-image">
+              <a href="#"><img src="../../assets/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+            </div>
+            <div class="testi-content">
+              <p>C'est la meilleure application de services entre particuliers. Efficace, rapide et sans effort</p>
+              <div class="testi-meta">
+                Steve Jobs
+                <span>Apple Inc.</span>
+              </div>
+            </div>
+          </div>
+          <!--
+          <div class="slide">
+            <div class="testi-image">
+              <a href="#"><img src="../../assets/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+            </div>
+            <div class="testi-content">
+              <p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis
+                molestias.</p>
+              <div class="testi-meta">
+                Collis Ta'eed
+                <span>Envato Inc.</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="testi-image">
+              <a href="#"><img src="../../assets/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+            </div>
+            <div class="testi-content">
+              <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo
+                rerum!</p>
+              <div class="testi-meta">
+                John Doe
+                <span>XYZ Inc.</span>
+              </div>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="section">
+    <div class="container clearfix">
+
+      <div class="row topmargin-sm">
+
+
+        <div class="heading-block center">
+          <h3>La Team Talented</h3>
+        </div>
+
+        <div class="col-md-4  col-md-push-2 col-sm-6 bottommargin">
+
+          <div class="team">
+            <div class="team-image">
+              <img src="../../assets/images/team/Nairo.jpg" alt="Florian Minin">
+            </div>
+            <div class="team-desc team-desc-bg">
+              <div class="team-title"><h4>Florian Minin</h4><span>CTO & Co-Founder</span></div>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+              </a>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                <i class="icon-twitter"></i>
+                <i class="icon-twitter"></i>
+              </a>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                <i class="icon-gplus"></i>
+                <i class="icon-gplus"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-push-2 col-md-4 col-sm-6 bottommargin">
+
+          <div class="team">
+            <div class="team-image">
+              <img src="../../assets/images/team/kb.jpg" alt="John Doe">
+            </div>
+            <div class="team-desc team-desc-bg">
+              <div class="team-title"><h4>Khemon Beh</h4><span>CEO</span></div>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+              </a>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                <i class="icon-twitter"></i>
+                <i class="icon-twitter"></i>
+              </a>
+              <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                <i class="icon-gplus"></i>
+                <i class="icon-gplus"></i>
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
