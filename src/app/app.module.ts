@@ -19,6 +19,7 @@ import {MaterialModule} from './material'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { RegisterComponent } from './register';
+import {LoginComponent} from "./login/login.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
 
@@ -39,7 +40,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     FooterComponent,
     AppComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -68,9 +70,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     JobService,
     //AppState
     // providers used to create fake backend
-    /*fakeBackendProvider,
+    fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions*/
+    BaseRequestOptions
+    //comment 3 rows above if you want to disable fake backend*/
   ],
   bootstrap: [AppComponent]
 })

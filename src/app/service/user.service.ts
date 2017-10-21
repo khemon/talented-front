@@ -50,6 +50,38 @@ export class UserService {
       .catch(this.handleError);
   }
 
+
+  /**
+   * appelle le service back end qui va :
+   * 1. verifier l'existence de l'utilsateur en base (login, password)
+   * 2. retourner le token de la session
+   */
+  authenticate(username: string, password: string) : Observable<User[]>{
+    let userString = JSON.stringify({username: username, password: password});
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    let endpoint = '/authenticate';
+    var url;
+    switch(this.mode) {
+      case DATA_SOURCE.BACK_END_API:
+        url = this.apiUrl + this.apiEndPoint + endpoint;
+        break;
+      default:
+        url = 'http://localhost:4200/' + this.apiEndPoint + endpoint;
+    }
+    return this.http.post(url, userString, options)
+      .map((response: Response) => {
+        let user = response.json();
+        if(user && user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          alert("user loggé, id " + user.id + " token: " + user.token);
+        }
+        return user
+      })
+      .catch(this.handleError);
+  }
+
   /**
    * Retourne la liste des utilisateurs disponibles
    * aux alentours d'un job donné

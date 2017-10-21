@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import {RegisterComponent} from './register';
 import { HomeComponent } from './home';
-/*import { NoContentComponent } from './no-content';
+/*import { NoContentComponent } from './no-content';*/
 import {LoginComponent} from "./login";
 /*import {ContactComponent} from "./contact/";
 import {ProfileComponent} from './profile';
@@ -16,8 +16,8 @@ export const ROUTES: Routes = [
   { path: 'register-user', component: RegisterComponent} ,
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
-  /*{ path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent },
+  { path: 'login', component: LoginComponent},
+  /*{ path: 'profile', component: ProfileComponent },
   { path: 'list-users-search', component: ListUsersSearchComponent},
   { path: 'list-jobs', component: ListJobsComponent},
   { path: 'job', component: JobComponent},
