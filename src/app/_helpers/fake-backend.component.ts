@@ -10,41 +10,51 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
     setTimeout(() => {
 
       // fake authenticate api end point
-      if (connection.request.url.endsWith('user/add') && connection.request.method === RequestMethod.Post) {
-        // get parameters from post request
-        let params = JSON.parse(connection.request.getBody());
-        // check user credentials and return fake jwt token if valid
-        alert('test inside back end user/add');
-        if (1==1) {
-          connection.mockRespond(new Response(
-            new ResponseOptions({ status: 200, body: { token: 'fake-jwt-token' } })
-          ));
-        } else {
-          connection.mockRespond(new Response(
-            new ResponseOptions({ status: 200 })
-          ));
-        }
-      }
-      else if (connection.request.url.endsWith('user/authenticate') && connection.request.method === RequestMethod.Post) {
-        alert('test inside back end user/authenticate');
-        let params = JSON.parse(connection.request.getBody());
-        if (params.username=='beh') {
-          connection.mockRespond(new Response(
-            new ResponseOptions(
-              { status: 200,
-                body: {
-                  id:1,
-                  token: 'fake-jwt-token'
-              }})
-          ));
-        } else {
-          connection.mockRespond(new Response(
-            new ResponseOptions({ status: 403 })
-          ));
-        }
-      }
+      switch (connection.request.method ){
+        case RequestMethod.Post:
+          // get parameters from post request
+          let params = JSON.parse(connection.request.getBody());
+
+          // create user end point
+          if(connection.request.url.endsWith('api/users/add')){
+
+              // check user credentials and return fake jwt token if valid
+              alert('test inside back end user/add');
+              if (1==1) {
+                connection.mockRespond(new Response(
+                  new ResponseOptions({ status: 200, body: { token: 'fake-jwt-token' } })
+                ));
+              } else {
+                connection.mockRespond(new Response(
+                  new ResponseOptions({ status: 200 })
+                ));
+              }
+          }
+          // authenticate end point
+          else if (connection.request.url.endsWith('api/authenticate/')) {
+            alert('test inside back end api/authenticate');
+            if (params.username=='beh') {
+              connection.mockRespond(new Response(
+                new ResponseOptions(
+                  { status: 200,
+                    body: {
+                      id:1,
+                      token: 'fake-jwt-token'
+                    }})
+              ));
+            } else {
+              connection.mockRespond(new Response(
+                new ResponseOptions({ status: 403 })
+              ));
+            }
 
 
+          }
+          break;
+        case RequestMethod.Get:
+          break;
+        default: alert('service was not caught by fake back end');
+      }
 
     }, 500);
 

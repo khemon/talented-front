@@ -15,7 +15,7 @@
         <a href="index.html" class="retina-logo" data-dark-logo="../../assets/images/logo-dark@2x.png"><img src="../../assets/images/logo@2x.png" alt="Canvas Logo"></a>
       </div><!-- #logo end -->
 
-      <div id="top-account" [ngClass]="{'dropdown': !isDropdownOpen, 'dropdown open': isDropdownOpen}">
+      <div  *ngIf=this.auth.isAuthenticated() id="top-account" [ngClass]="{'dropdown': !isDropdownOpen, 'dropdown open': isDropdownOpen}">
         <a href="#"  (click)="isDropdownOpen = !isDropdownOpen;"
            class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
@@ -23,7 +23,7 @@
           <li><a href="#">Messages <span class="badge">5</span></a></li>
           <li><a href="#">Settings</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">Logout <i class="icon-signout"></i></a></li>
+          <li><a href="#" (click)="logout()">Logout <i class="icon-signout"></i></a></li>
         </ul>
       </div>
 
@@ -34,10 +34,10 @@
         <ul>
           <li class="current"><a href="index.html"><div>Home</div></a></li>
           <li><a [routerLink]=" ['./register-user'] "><div>Créer un compte</div></a></li>
-          <li><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
           <li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
           <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
           <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>
+          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
         </ul>
 
         <!-- Top Cart

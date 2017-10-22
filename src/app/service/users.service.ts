@@ -10,10 +10,11 @@ import {APP_CONFIG} from '../app-config';
 import {AppConfig} from '../iapp-config';
 import 'rxjs/Rx';
 import {DATA_SOURCE} from './data-source';
+import {Job} from "../model/job";
 
 @Injectable()
 export class UserService {
-  private apiEndPoint = 'user';
+  private apiEndPoint = 'api/users/';
   private apiUrl;
   private mockDataUrl;
   private mode = DATA_SOURCE.MOCK_DATA
@@ -23,18 +24,36 @@ export class UserService {
     this.mockDataUrl = config.mockDataUrl;
   }
 
-  /**
-   * Retourne la liste des utilisateurs de la BDD
-   */
-  getUsers(): Observable<User[]>{
-    var url;
+  private getBaseUrl(endUrl: string){
+    var url = '';
+    switch(this.mode) {
+      case DATA_SOURCE.BACK_END_API:
+        url = this.apiUrl + this.apiEndPoint + endUrl;
+        break;
+      default :
+        url = this.mockDataUrl+'users.json';
+    }
+    return url
+  }
+
+  private postBaseUrl(endUrl: string){
+    var url = '';
     switch(this.mode) {
       case DATA_SOURCE.BACK_END_API:
         url = this.apiUrl + this.apiEndPoint;
         break;
       default :
-        url = this.mockDataUrl+'users.json';
+        url = 'http://localhost:4200/api/users/' + endUrl;
     }
+    return url
+  }
+
+
+  /**
+   * Retourne la liste des utilisateurs de la BDD
+   */
+  getAll(): Observable<User[]>{
+    var url = this.getBaseUrl('');
     return this.http.get(url)
       .map(this.extractData)
       .catch(this.handleError);
@@ -43,8 +62,8 @@ export class UserService {
   /**TODO
   * Retourne un utilisateur à partir de son Id
   */
-  getUserById(id: string): Observable<User[]>{
-    var url = this.apiUrl + this.apiEndPoint + '/' + id;
+  getById(id: string): Observable<User[]>{
+    var url = this.postBaseUrl(id);
     return this.http.get(url)
       .map(this.extractData)
       .catch(this.handleError);
@@ -52,50 +71,13 @@ export class UserService {
 
 
   /**
-   * appelle le service back end qui va :
-   * 1. verifier l'existence de l'utilsateur en base (login, password)
-   * 2. retourner le token de la session
-   */
-  authenticate(username: string, password: string) : Observable<User[]>{
-    let userString = JSON.stringify({username: username, password: password});
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
-    let endpoint = '/authenticate';
-    var url;
-    switch(this.mode) {
-      case DATA_SOURCE.BACK_END_API:
-        url = this.apiUrl + this.apiEndPoint + endpoint;
-        break;
-      default:
-        url = 'http://localhost:4200/' + this.apiEndPoint + endpoint;
-    }
-    return this.http.post(url, userString, options)
-      .map((response: Response) => {
-        let user = response.json();
-        if(user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          alert("user loggé, id " + user.id + " token: " + user.token);
-        }
-        return user
-      })
-      .catch(this.handleError);
-  }
-
-  /**
+   * TODO:
    * Retourne la liste des utilisateurs disponibles
    * aux alentours d'un job donné
    * Signature : getUsersAvailableByJob(Job job);
    */
-  getTalentsAvailableByJob() : Observable<User[]>{
-    var url;
-    switch(this.mode) {
-      case DATA_SOURCE.BACK_END_API:
-        url = this.apiUrl + this.apiEndPoint;
-        break;
-      default :
-        url = this.mockDataUrl+'users.json';
-    }
+  getByJob(job: Job) : Observable<User[]>{
+    var url = this.getBaseUrl('job/' + job) ;
     return this.http.get(url)
       .map(this.extractData)
       .catch(this.handleError);
@@ -111,18 +93,12 @@ export class UserService {
    */
    //notifyUser() : void {}
 
-  addUser(user: User): Observable<User> {
+  create(user: User): Observable<User> {
     let userString = JSON.stringify(user);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    var url;
-    switch(this.mode) {
-      case DATA_SOURCE.BACK_END_API:
-        url = this.apiUrl + this.apiEndPoint + '/add';
-        break;
-      default:
-        url = 'http://localhost:4200/user/add'// this.apiEndPoint + '/add';
-    }
+    var url = this.postBaseUrl('add') ;
+
     alert(userString);
     return this.http.post(url, userString, options)
           .map((response: Response) => {
@@ -131,39 +107,19 @@ export class UserService {
             return token
           })
           .catch(this.handleError);
-     }
-/*
-  (id: numgetUserber): Observable<User> {
-    return this.getUsers().
-    subscribe(
-      users => users.find(user => user.id === id)
-    )
   }
-
 
   update(user: User): Observable<User> {
-    const url = `${this.usersUrl}/${user.id}`;
-    return this.http
-      .put(url, JSON.stringify(user), {headers: this.headers})
-      .map(this.extractData)
-      .catch(this.handleError);
+    var url = this.postBaseUrl('update');
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.put(url, JSON.stringify(user), {headers: headers}).map(this.extractData).catch(this.handleError);
   }
 
-  addUser(user: User): Observable<User> {
-    let userString = JSON.stringify(user);
-    let headers = this.headers;
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(this.usersUrl, userString, options)
-      .map(this.extractData)
-      .catch(this.handleError);
+  delete(id: string) {
+    var url = this.getBaseUrl(id)
+    return this.http.delete(url).map(this.extractData).catch(this.handleError);
   }
 
-  private deleteUser(username: string): Observable<User> {
-
-    return this.http.delete(`${this.usersUrl}/${username}`)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }*/
 
   private extractData(res: Response) {
     let body = res.json();

@@ -3,7 +3,7 @@ import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import {MaterialModule} from '../material'
 import {User} from '../model/user';
-import {UserService} from '../service/user.service';
+import {UserService} from '../service/users.service';
 import {TalentService} from "../service/talents.service";
 import {Talent} from "../model/talent";
 import {Interpolation} from "@angular/compiler";
@@ -120,7 +120,7 @@ export class RegisterComponent {
   }
 
   addUser(user: User) {
-    this.userService.addUser(user)
+    this.userService.create(user)
       .subscribe(
         user2 => this.user2 = user2,
         error => this.errorMessage = <any>error);

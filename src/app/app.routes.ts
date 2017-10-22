@@ -3,6 +3,8 @@ import {RegisterComponent} from './register';
 import { HomeComponent } from './home';
 /*import { NoContentComponent } from './no-content';*/
 import {LoginComponent} from "./login";
+import {AuthGuard} from "./_guards/auth.guard";
+import {ProfileComponent} from "./profile/profile.component";
 /*import {ContactComponent} from "./contact/";
 import {ProfileComponent} from './profile';
 import {TalentWorkerComponent} from "./talent-worker/talent-worker.component";
@@ -14,11 +16,13 @@ import {JobComponent} from "./job/job.component";*/
 
 export const ROUTES: Routes = [
   { path: 'register-user', component: RegisterComponent} ,
-  { path: '',      component: HomeComponent },
+  { path: '',      component: HomeComponent},
   { path: 'home',  component: HomeComponent },
   { path: 'login', component: LoginComponent},
-  /*{ path: 'profile', component: ProfileComponent },
-  { path: 'list-users-search', component: ListUsersSearchComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]  },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
+  /*{ path: 'list-users-search', component: ListUsersSearchComponent},
   { path: 'list-jobs', component: ListJobsComponent},
   { path: 'job', component: JobComponent},
   { path: 'contact', component: ContactComponent },

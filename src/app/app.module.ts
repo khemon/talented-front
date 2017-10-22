@@ -23,7 +23,7 @@ import {LoginComponent} from "./login/login.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
 
-import {UserService} from "./service/user.service";
+import {UserService} from "./service/users.service";
 import {JobService} from "./service/job.service";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { ROUTES } from './app.routes';
@@ -31,6 +31,11 @@ import {APP_CONFIG, TALENTED_DI_CONFIG } from './app-config'
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AlertService} from "./service/alert.service";
+import {AuthenticationService} from "./service/authentication.service";
+import {AuthGuard} from "./_guards/auth.guard";
+import {ProfileComponent} from "./profile/profile.component";
 
 
 
@@ -41,7 +46,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     AppComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
 
   ],
   imports: [
@@ -60,7 +66,6 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     }),
 
 
-
   ],
   providers: [
     // expose our Services and Providers into Angular's dependency injection
@@ -68,12 +73,17 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     {provide: APP_CONFIG, useValue: TALENTED_DI_CONFIG},
     UserService,
     JobService,
+    AuthenticationService,
+    AuthGuard,
     //AppState
+
     // providers used to create fake backend
     fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
     //comment 3 rows above if you want to disable fake backend*/
+
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
