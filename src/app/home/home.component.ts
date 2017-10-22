@@ -29,7 +29,7 @@ export class HomeComponent {
     this.getJobTypes();
   }
   getJobTypes():void {
-    this.talentService.getTalents()
+    this.talentService.getAll()
       .subscribe(
         jobTypes => this.jobTypes = this.utils.transformJobTypes(jobTypes),
         error => this.errorMessage = <any>error);

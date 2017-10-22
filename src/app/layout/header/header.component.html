@@ -20,8 +20,8 @@
            class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
           <li><a [routerLink]=" ['./profile']" >Profile</a></li>
-          <li><a href="#">Messages <span class="badge">5</span></a></li>
-          <li><a href="#">Settings</a></li>
+          <!--<li><a href="#">Messages <span class="badge">5</span></a></li>
+          <li><a href="#">Settings</a></li> -->
           <li role="separator" class="divider"></li>
           <li><a href="#" (click)="logout()">Logout <i class="icon-signout"></i></a></li>
         </ul>
@@ -34,9 +34,9 @@
         <ul>
           <li class="current"><a href="index.html"><div>Home</div></a></li>
           <li><a [routerLink]=" ['./register-user'] "><div>Créer un compte</div></a></li>
-          <li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
+          <!--<li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
           <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
-          <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>
+          <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>-->
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
         </ul>
 

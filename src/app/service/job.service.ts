@@ -17,7 +17,7 @@ import {DATA_SOURCE} from './data-source';
 
 
 export class JobService {
-  private apiEndPoint = 'jobs/active';
+  private apiEndPoint = 'api/jobs/active';
   private apiUrl;
   private mockDataUrl;
   private mode = DATA_SOURCE.MOCK_DATA; // change to BACK_END_API to fetch data from server
@@ -31,7 +31,7 @@ export class JobService {
   /**
    * Retourne la liste des job request de la BDD
    */
-  getJobs(): Observable<Job[]>{
+  getAll(): Observable<Job[]>{
     var url;
     switch(this.mode) {
       case DATA_SOURCE.BACK_END_API:
@@ -50,7 +50,7 @@ export class JobService {
    * @param user
    * @returns {Observable<JobRequest>}
    */
-  addJob(job: Job): Observable<Job> {
+  create(job: Job): Observable<Job> {
     let userString = JSON.stringify(job);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});

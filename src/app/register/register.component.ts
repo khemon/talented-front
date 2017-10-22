@@ -1,4 +1,4 @@
-import {Component, AfterViewChecked, ViewChild, NgZone} from '@angular/core';
+import {Component, AfterViewChecked, ViewChild, NgZone, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import {MaterialModule} from '../material'
@@ -26,7 +26,7 @@ declare var google: any;
   providers: [UserService, TalentService, FormBuilder, MaterialModule]
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   talents: Talent[];
   user: User;
   submitted = false
@@ -128,10 +128,11 @@ export class RegisterComponent {
   }
 
   getTalents(){
-    this.talentService.getTalents()
+    this.talentService.getAll()
       .subscribe(
         talents => this.jobTypes = talents,
         error => this.errorMessage = <any>error);
+
   }
 
   setSelectedTalents(selectElement) {

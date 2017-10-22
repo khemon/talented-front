@@ -1,5 +1,11 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import {Talent} from "../model/talent";
+
+// Mock Data
+import * as talents from '../../assets/mock-data/talents.json';
+import * as jobs from '../../assets/mock-data/jobs.json';
+import * as users from '../../assets/mock-data/users.json';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
   // configure fake backend
@@ -52,6 +58,13 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           }
           break;
         case RequestMethod.Get:
+          if (connection.request.url.endsWith('api/talents/')) {
+            alert('test list talents');
+              connection.mockRespond(new Response(new ResponseOptions({
+                status: 200,
+                body: talents
+              })));
+           }
           break;
         default: alert('service was not caught by fake back end');
       }
@@ -62,6 +75,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
   return new Http(backend, options);
 }
+
 
 export let fakeBackendProvider = {
   // use fake backend in place of Http service for backend-less development
