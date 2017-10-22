@@ -33,7 +33,7 @@
 
         <ul>
           <li class="current"><a href="index.html"><div>Home</div></a></li>
-          <li><a [routerLink]=" ['./register-user'] "><div>Créer un compte</div></a></li>
+          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./register-user'] "><div>Créer un compte</div></a></li>
           <!--<li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
           <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
           <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>-->
@@ -78,7 +78,7 @@
         </div> #top-cart end -->
 
         <!-- Top Search
-                    ============================================= -->
+                    ============================================= 
         <div id="top-search">
           <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
           <form action="search.html" method="get">

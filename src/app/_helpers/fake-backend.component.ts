@@ -3,15 +3,14 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import {Talent} from "../model/talent";
 
 // Mock Data
-import * as talents from '../../assets/mock-data/talents.json';
-import * as jobs from '../../assets/mock-data/jobs.json';
-import * as users from '../../assets/mock-data/users.json';
+import * as talents from 'assets/mock-data/talents.json';
+/*import * as jobs from '../../assets/mock-data/jobs.json';
+import * as users from '../../assets/mock-data/users.json';*/
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
   // configure fake backend
   backend.connections.subscribe((connection: MockConnection) => {
     let testUser = { username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
-
     // wrap in timeout to simulate server api call
     setTimeout(() => {
 
@@ -25,7 +24,6 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           if(connection.request.url.endsWith('api/users/add')){
 
               // check user credentials and return fake jwt token if valid
-              alert('test inside back end user/add');
               if (1==1) {
                 connection.mockRespond(new Response(
                   new ResponseOptions({ status: 200, body: { token: 'fake-jwt-token' } })
@@ -38,7 +36,6 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           }
           // authenticate end point
           else if (connection.request.url.endsWith('api/authenticate/')) {
-            alert('test inside back end api/authenticate');
             if (params.username=='beh') {
               connection.mockRespond(new Response(
                 new ResponseOptions(
@@ -59,7 +56,6 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           break;
         case RequestMethod.Get:
           if (connection.request.url.endsWith('api/talents/')) {
-            alert('test list talents');
               connection.mockRespond(new Response(new ResponseOptions({
                 status: 200,
                 body: talents
