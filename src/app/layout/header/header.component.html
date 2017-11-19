@@ -38,6 +38,7 @@
           <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
           <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>-->
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
+          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./list-jobs'] "><div>Voir les Jobs</div></a></li>
         </ul>
 
         <!-- Top Cart
@@ -78,7 +79,7 @@
         </div> #top-cart end -->
 
         <!-- Top Search
-                    ============================================= 
+                    =============================================
         <div id="top-search">
           <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
           <form action="search.html" method="get">

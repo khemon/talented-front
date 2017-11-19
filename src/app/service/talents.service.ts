@@ -36,7 +36,6 @@ export class TalentService {
       default :
         url = this.mockDataUrl+'talents.json';
     }
-    alert(url);
     return this.http.get(url)
       .map(this.extractData)
       .catch(this.handleError);

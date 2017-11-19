@@ -20,7 +20,7 @@ export class JobService {
   private apiEndPoint = 'api/jobs/active';
   private apiUrl;
   private mockDataUrl;
-  private mode = DATA_SOURCE.MOCK_DATA; // change to BACK_END_API to fetch data from server
+  private mode = DATA_SOURCE.BACK_END_API; // change to BACK_END_API to fetch data from server
 
   constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: Http) {
     // Base URL for Talented API
@@ -29,7 +29,7 @@ export class JobService {
   }
 
   /**
-   * Retourne la liste des job request de la BDD
+   * Retourne la liste des job (en vie) request de la BDD
    */
   getAll(): Observable<Job[]>{
     var url;

@@ -36,6 +36,8 @@ import {AlertService} from "./service/alert.service";
 import {AuthenticationService} from "./service/authentication.service";
 import {AuthGuard} from "./_guards/auth.guard";
 import {ProfileComponent} from "./profile/profile.component";
+import {ListJobsComponent} from "./list-jobs/list-jobs.component";
+import {MapJobsService} from "./list-jobs/google-map/map-jobs.service";
 
 
 
@@ -47,7 +49,8 @@ import {ProfileComponent} from "./profile/profile.component";
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListJobsComponent
 
   ],
   imports: [
@@ -73,6 +76,7 @@ import {ProfileComponent} from "./profile/profile.component";
     {provide: APP_CONFIG, useValue: TALENTED_DI_CONFIG},
     UserService,
     JobService,
+    MapJobsService,
     AuthenticationService,
     AuthGuard,
     //AppState
