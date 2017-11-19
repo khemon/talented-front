@@ -24,7 +24,7 @@ import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
 
 import {UserService} from "./service/users.service";
-import {JobService} from "./service/job.service";
+import {JobService} from "./service/jobs.service";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { ROUTES } from './app.routes';
 import {APP_CONFIG, TALENTED_DI_CONFIG } from './app-config'
@@ -38,6 +38,9 @@ import {AuthGuard} from "./_guards/auth.guard";
 import {ProfileComponent} from "./profile/profile.component";
 import {ListJobsComponent} from "./list-jobs/list-jobs.component";
 import {MapJobsService} from "./list-jobs/google-map/map-jobs.service";
+import {CreateJobComponent} from "./create-job/create-job.component";
+import {ListUsersSearchComponent} from "./list-users-search/list-users-search.component";
+import {ListUsersComponent} from "./list-users-search/list-users/list-users.component";
 
 
 
@@ -50,7 +53,10 @@ import {MapJobsService} from "./list-jobs/google-map/map-jobs.service";
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    ListJobsComponent
+    CreateJobComponent,
+    ListJobsComponent,
+    ListUsersSearchComponent,
+    ListUsersComponent
 
   ],
   imports: [

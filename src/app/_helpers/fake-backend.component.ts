@@ -5,8 +5,7 @@ import {Talent} from "../model/talent";
 // Mock Data
 import * as talents from 'assets/mock-data/talents.json';
 import * as jobs from 'assets/mock-data/jobs.json';
-/*import * as jobs from '../../assets/mock-data/jobs.json';
-import * as users from '../../assets/mock-data/users.json';*/
+import * as users from '../../assets/mock-data/users.json';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
   // configure fake backend
@@ -68,7 +67,12 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
               body: jobs
             })));
           }
-
+          else if (connection.request.url.endsWith('api/users/')) {
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200,
+              body: users
+            })));
+          }
           break;
         default: alert('service was not caught by fake back end');
       }

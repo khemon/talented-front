@@ -35,10 +35,10 @@
           <li class="current"><a href="index.html"><div>Home</div></a></li>
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./register-user'] "><div>Créer un compte</div></a></li>
           <!--<li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
-          <li><a [routerLink]=" ['./list-jobs'] "><div>Jobs</div></a></li>
           <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>-->
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
-          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./list-jobs'] "><div>Voir les Jobs</div></a></li>
+          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./list-jobs'] "><div>Demander service</div></a></li>
+          <li><a [routerLink]=" ['./list-users-search'] "><div>les workers</div></a></li>
         </ul>
 
         <!-- Top Cart

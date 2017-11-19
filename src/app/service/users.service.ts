@@ -17,7 +17,7 @@ export class UserService {
   private apiEndPoint = 'api/users/';
   private apiUrl;
   private mockDataUrl;
-  private mode = DATA_SOURCE.MOCK_DATA
+  private mode = DATA_SOURCE.BACK_END_API
   constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: Http) {
     // Base URL for Talented API
     this.apiUrl = config.apiUrl;
@@ -99,11 +99,9 @@ export class UserService {
     let options = new RequestOptions({headers: headers});
     var url = this.postBaseUrl('add') ;
 
-    alert(userString);
     return this.http.post(url, userString, options)
           .map((response: Response) => {
             let token= response.json() && response.json().token;
-            alert(response.json().token);
             return token
           })
           .catch(this.handleError);
@@ -123,7 +121,6 @@ export class UserService {
 
   private extractData(res: Response) {
     let body = res.json();
-    alert(body.data);
     return body.data || { };
   }
 
