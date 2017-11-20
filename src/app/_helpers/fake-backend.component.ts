@@ -7,7 +7,9 @@ import * as talents from 'assets/mock-data/talents.json';
 import * as jobs from 'assets/mock-data/jobs.json';
 import * as users from '../../assets/mock-data/users.json';
 
+
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
+
   // configure fake backend
   backend.connections.subscribe((connection: MockConnection) => {
     let testUser = { username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
@@ -33,6 +35,27 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                   new ResponseOptions({ status: 200 })
                 ));
               }
+          }
+          // create a job
+          else if (connection.request.url.endsWith('api/jobs/add')) {
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200})));
+          }
+          // get job by id
+         else if (connection.request.url.endsWith('api/jobs/id')) {
+            let job = null;
+
+            for( let i = 0; i < jobs.data.length; i++){
+              if(jobs.data[i].id == params) {
+                job = jobs.data[i];
+                break;
+              }
+            }
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200,
+              body: job
+            })));
+
           }
           // authenticate end point
           else if (connection.request.url.endsWith('api/authenticate/')) {
@@ -61,12 +84,13 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 body: talents
               })));
            }
-          else if (connection.request.url.endsWith('api/jobs/active')) {
+          else if (connection.request.url.endsWith('api/jobs/')) {
             connection.mockRespond(new Response(new ResponseOptions({
               status: 200,
               body: jobs
             })));
           }
+
           else if (connection.request.url.endsWith('api/users/')) {
             connection.mockRespond(new Response(new ResponseOptions({
               status: 200,

@@ -41,6 +41,7 @@ import {MapJobsService} from "./list-jobs/google-map/map-jobs.service";
 import {CreateJobComponent} from "./create-job/create-job.component";
 import {ListUsersSearchComponent} from "./list-users-search/list-users-search.component";
 import {ListUsersComponent} from "./list-users-search/list-users/list-users.component";
+import {JobComponent} from "./job/job.component";
 
 
 
@@ -56,7 +57,8 @@ import {ListUsersComponent} from "./list-users-search/list-users/list-users.comp
     CreateJobComponent,
     ListJobsComponent,
     ListUsersSearchComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    JobComponent
 
   ],
   imports: [

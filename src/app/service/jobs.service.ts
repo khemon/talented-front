@@ -17,7 +17,7 @@ import {DATA_SOURCE} from './data-source';
 
 
 export class JobService {
-  private apiEndPoint = 'api/jobs/active';
+  private apiEndPoint = 'api/jobs/';
   private apiUrl;
   private mockDataUrl;
   private mode = DATA_SOURCE.BACK_END_API; // change to BACK_END_API to fetch data from server
@@ -26,6 +26,18 @@ export class JobService {
     // Base URL for Talented API
     this.apiUrl = config.apiUrl;
     this.mockDataUrl = config.mockDataUrl;
+  }
+
+  private postBaseUrl(endUrl: string){
+    var url = '';
+    switch(this.mode) {
+      case DATA_SOURCE.BACK_END_API:
+        url = this.apiUrl + this.apiEndPoint;
+        break;
+      default :
+        url = 'http://localhost:4200/'+  this.apiEndPoint;;
+    }
+    return url+ endUrl;
   }
 
   /**
@@ -46,6 +58,19 @@ export class JobService {
   }
 
   /**
+   * Retourne le job par Id
+   */
+  getById(id: string): Observable<Job> {
+    id = JSON.stringify(id);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    var url = this.postBaseUrl('id') ;
+    return this.http.post(url, id, options)
+      .map(this.extractObject)
+      .catch(this.handleError);
+  }
+
+  /**
    * post a new job to server
    * @param user
    * @returns {Observable<JobRequest>}
@@ -54,23 +79,27 @@ export class JobService {
     let userString = JSON.stringify(job);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    alert(userString);
-    return this.http.post(this.apiUrl + 'job/add', userString, options)
+    return this.http.post(this.apiUrl + 'add', userString, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-
+  private extractObject(res: Response){
+    let job = res.json();
+    job.date = new Date(job.date);
+    var talent = new Talent();
+    talent.id = job.talent.id;
+    talent.name = job.talent.name;
+    job.talent = talent;
+    return job || { };
+  }
   private extractData(res: Response) {
     let body = res.json();
     let data = body.data || { };
+
     data.forEach((d) => {
       d.date = new Date(d.date);
-
       var gpsLocation = new GPSLocation();
-      gpsLocation.latitude = d.location.x;
-      gpsLocation.longitude = d.location.y;
-      d.location = gpsLocation;
       var talent = new Talent();
       talent.id = d.talent.id;
       talent.name = d.talent.name;

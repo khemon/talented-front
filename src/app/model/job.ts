@@ -20,5 +20,6 @@ export class Job {
   public picture?: string;
   constructor() {
       this.date = new Date();
+      this.location = new GPSLocation();
   }
 }

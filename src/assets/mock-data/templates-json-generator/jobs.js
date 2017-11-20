@@ -7,8 +7,8 @@
     description: '{{lorem(1, "paragraphs")}}',
     address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
     location: {
-      x: '{{floating(48.800001, 48.900001)}}',
-      y: '{{floating(2.240001, 2.4199999)}}'
+      latitude: '{{floating(48.800001, 48.900001)}}',
+      longitude: '{{floating(2.240001, 2.4199999)}}'
     },
     talent:
       {
