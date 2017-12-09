@@ -43,11 +43,13 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
           }
           // get job by id
          else if (connection.request.url.endsWith('api/jobs/id')) {
+            var parsedJobs = JSON.parse(JSON.stringify(jobs));
+            alert(parsedJobs .data[0].description);
             let job = null;
 
-            for( let i = 0; i < jobs.data.length; i++){
-              if(jobs.data[i].id == params) {
-                job = jobs.data[i];
+            for( let i = 0; i < parsedJobs .data.length; i++){
+              if(parsedJobs .data[i].id == params) {
+                job = parsedJobs .data[i];
                 break;
               }
             }
@@ -55,6 +57,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
               status: 200,
               body: job
             })));
+
 
           }
           // authenticate end point
