@@ -59,6 +59,15 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
 
           }
+          // job apply
+          else if (connection.request.url.endsWith('api/jobs/apply')) {
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200,
+              body: { message: 'Candidature prise en compte'}
+            })));
+
+
+          }
           // authenticate end point
           else if (connection.request.url.endsWith('api/authenticate/')) {
             if (params.username=='beh') {

@@ -84,6 +84,16 @@ export class JobService {
       .catch(this.handleError);
   }
 
+  apply(jobId: string, userId : string):  Observable<Job> {
+    let params = JSON.stringify({'jobId': jobId, 'userId': userId});
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    let url = this.postBaseUrl('apply');
+    return this.http.post(url, params, options)
+      .map(this.extractSimpleData)
+      .catch(this.handleError);
+  }
+
   private extractObject(res: Response){
     let job = res.json();
     job.date = new Date(job.date);
@@ -106,7 +116,11 @@ export class JobService {
       d.talent = talent;
     });
     return data;
+  }
 
+  private extractSimpleData(res: Response) {
+    let body = res.json();
+    return body.data || { };
   }
 
   private handleError (error: Response | any) {

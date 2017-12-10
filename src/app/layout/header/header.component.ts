@@ -24,7 +24,9 @@ export class HeaderComponent{
 
   logout(){
     this.auth.logout();
+    this.isDropDownOpen = false;
     this.router.navigate(['/home']);
+
   }
 
 }

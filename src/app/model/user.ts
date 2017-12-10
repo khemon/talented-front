@@ -1,5 +1,6 @@
 import {Talent} from "./talent";
 import {GPSLocation} from "./gps-location";
+import {Application} from "./application";
 /**
  * Created by Khémon on 23/11/2016.
  */
@@ -21,6 +22,7 @@ export class User {
   public phone?: string;
   public create_time?: Date;
   public birthdate?: Date;
+  public applications: Application[];
 
   constructor() {
     this.hourlyRate = '20';
