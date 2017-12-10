@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "584dca2c725d46a035b9f685",
+      "firstName": "Mckenzie",
+      "lastName": "Orr",
+      "username": "Mck",
+      "email": "mckenzieorr@isoternia.com",
+      "address": "833 Butler Place, Stockwell, Florida, 6921",
+      "location": {
+        "latitude": 48.869137,
+        "longitude": 2.339276
+      },
+      "talent": [
+        {
+          "id": 1,
+          "name": "Ménage"
+        },
+        {
+          "id": 2,
+          "name": "Déménagement"
+        },
+        {
+          "id": 3,
+          "name": "Bricolage"
+        },
+        {
+          "id": 4,
+          "name": "Livraison"
+        },
+        {
+          "id": 5,
+          "name": "Baby-Sitting"
+        }
+      ],
+      "phone": "+33 (984) 439-2385",
+      "about": "Exercitation dolor enim ut voluptate cupidatat ut in. Excepteur magna excepteur duis labore culpa aliquip ut. Laborum sint eu adipisicing esse ullamco commodo eiusmod. Esse Lorem veniam incididunt et aute pariatur fugiat dolore sunt Lorem culpa est adipisicing.\r\n",
+      "registered": "2015-11-20T06:31:43 -01:00",
+      "age": 39,
+      "picture": 4,
+      "hourlyRate": 12
+    }
+  ]
+}

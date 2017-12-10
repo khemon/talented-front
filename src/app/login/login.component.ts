@@ -22,7 +22,6 @@ console.log('`Login` component loaded asynchronously');
 })
 //export class LoginContent {
 export class LoginComponent implements OnInit {
-  user;
   errorMessage: string;
   loginForm: FormGroup;
   loading = false;
@@ -48,37 +47,25 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.get('password'); }
 
   login(){
+    this.errorMessage = null;
     this.loading = true;
     this.authenticationService.login(this.username.value, this.password.value).subscribe(
       user => {
         // login successful so redirect to return url
-        this.router.navigateByUrl(this.returnUrl);
-        alert(this.returnUrl);
+        alert(user);
+        if(user != null ){
+          this.router.navigateByUrl(this.returnUrl);
+        }
+        this.loading = false;
       },
       error => {
         // login failed so display error
         this.errorMessage = <any>error;
+        alert(this.errorMessage);
         this.loading = false;
       });
 
   }
 
 }
-/*
-@Component({
-  selector: 'login',
-  template: `
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-      <button class='btn btn-lg btn-outline-primary' (click)='open()'>Launch demo modal</button>
-      `
 
-})
-export class LoginComponent {
-  constructor(private modalService: NgbModal) {}
-
-  open() {
-    const modalRef = this.modalService.open(LoginContent);
-    modalRef.componentInstance.name = 'World';
-  }
-}
-*/

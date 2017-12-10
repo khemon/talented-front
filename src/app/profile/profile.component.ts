@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from "../service/authentication.service";
+import {User} from "../model/user";
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -17,8 +18,9 @@ console.log('`Profile` component loaded asynchronously');
 export class ProfileComponent {
   localState: any;
   private tab: number = 1;
+  private user: User;
   constructor() {
-
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 

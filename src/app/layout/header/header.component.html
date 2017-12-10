@@ -11,19 +11,17 @@
       <!-- Logo
                 ============================================= -->
       <div id="logo">
-        <a href="index.html" class="standard-logo" data-dark-logo="../../assets/images/logo-dark.png"><img src="../../assets/images/logo-dark.png" alt="Canvas Logo"></a>
-        <a href="index.html" class="retina-logo" data-dark-logo="../../assets/images/logo-dark@2x.png"><img src="../../assets/images/logo@2x.png" alt="Canvas Logo"></a>
+        <a href="index.html" class="standard-logo" data-dark-logo="../../assets/images/logo-dark.png"><img src="../../../assets/images/talented-logo.png" style='padding:1px;' alt="Canvas Logo"></a>
+        <a href="index.html" class="retina-logo" data-dark-logo="../../assets/images/logo-dark@2x.png"><img src="../../../assets/images/logo@2x.png" alt="Canvas Logo"></a>
       </div><!-- #logo end -->
 
-      <div  *ngIf=this.auth.isAuthenticated() id="top-account" [ngClass]="{'dropdown': !isDropdownOpen, 'dropdown open': isDropdownOpen}">
-        <a href="#"  (click)="isDropdownOpen = !isDropdownOpen;"
+      <div  *ngIf=this.auth.isAuthenticated() id="top-account"  [ngClass]="{'dropdown': !isDropdownOpen, 'dropdown open': isDropdownOpen}" >
+        <a (click)="isDropdownOpen = !isDropdownOpen;"
            class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          <li><a [routerLink]=" ['./profile']" >Profile</a></li>
-          <!--<li><a href="#">Messages <span class="badge">5</span></a></li>
-          <li><a href="#">Settings</a></li> -->
+          <li><a [routerLink]=" ['./profile']" (click)="isDropdownOpen = !isDropdownOpen;" >Profile</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#" (click)="logout()">Logout <i class="icon-signout"></i></a></li>
+          <li><a href="#" (click)="logout()">Déconnexion <i class="icon-signout"></i></a></li>
         </ul>
       </div>
 
@@ -37,7 +35,7 @@
           <!--<li><a [routerLink]=" ['./list-users-search'] "><div>les TalentIds</div></a></li>
           <li><a [routerLink]=" ['./contact'] "><div>Contact</div></a></li>-->
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
-          <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./list-jobs'] "><div>Proposer mon aide</div></a></li>
+          <li ><a [routerLink]=" ['./list-jobs'] "><div>Proposer mon aide</div></a></li>
           <li><a [routerLink]=" ['./list-users-search'] "><div>les workers</div></a></li>
         </ul>
 

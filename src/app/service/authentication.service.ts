@@ -44,17 +44,18 @@ export class AuthenticationService {
       default:
         url = 'http://localhost:4200/' + this.apiEndPoint;
     }
-    alert(url);
     return this.http.post(url, userString, options)
       .map((response: Response) => {
-        let user = response.json();
-        if(user && user.token) {
+        let resp = response.json();
+        if(resp != null && resp.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', user.token);
-          alert("user loggé, id " + user.id + " token: " + user.token);
+          localStorage.setItem('currentUser', JSON.stringify(resp.user));
+          localStorage.setItem('token', resp.token);
+          alert("user loggé, " + resp.user.username + " token: " + resp.token);
+          return resp.user;
         }
-        return user
+        throw new TypeError(resp.message);
+
       })
       .catch(this.handleError);
   }

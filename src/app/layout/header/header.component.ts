@@ -17,11 +17,12 @@ import {Router} from "@angular/router";
 })
 
 export class HeaderComponent{
-
-  constructor(public auth: AuthenticationService, public router: Router) {}
+  isDropDownOpen: Boolean;
+  constructor(public auth: AuthenticationService, public router: Router) {
+    this.isDropDownOpen = false;
+  }
 
   logout(){
-    alert('test logout');
     this.auth.logout();
     this.router.navigate(['/home']);
   }

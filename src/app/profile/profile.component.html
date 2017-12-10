@@ -15,8 +15,8 @@
                style="max-width: 84px;">
 
           <div class="heading-block noborder">
-            <h3>monProfileName</h3>
-            <span>Mon profile </span>
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <span>{{user.username}}</span>
           </div>
 
           <div class="clear"></div>
@@ -28,67 +28,20 @@
               <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
                 <ul class="tab-nav clearfix">
-                  <li><a (click)="tab=1"><i class="icon-rss2"></i> Services</a></li>
-                  <li><a (click)="tab=2"><i class="icon-pencil2"></i> Posts</a></li>
-                  <li><a (click)="tab=3"><i class="icon-reply"></i> Replies</a></li>
-                  <li><a (click)="tab=4"><i class="icon-users"></i> Connections</a></li>
+                  <li><a (click)="tab=1"><i class="icon-pencil2"></i>Profil</a></li>
+                  <li><a (click)="tab=2"><i class="icon-reply"></i>Agenda</a></li>
+                  <li><a (click)="tab=3"><i class="icon-users"></i>Avis</a></li>
                 </ul>
 
                 <div class="tab-container" [ngSwitch]="tab">
 
                   <div class="tab-content clearfix" id="tab-feeds" *ngSwitchCase="1">
 
-                    <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium harum ea quo! Nulla
-                      fugiat earum, sed corporis amet iste non, id facilis dolorum, suscipit, deleniti ea. Nobis,
-                      temporibus magnam doloribus. Reprehenderit necessitatibus esse dolor tempora ea unde, itaque odit.
-                      Quos.</p>
 
-                    <div class="table-responsive">
-                      <table class="table table-bordered table-striped">
-                        <colgroup>
-                          <col class="col-xs-1">
-                          <col class="col-xs-7">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                          <th>Time</th>
-                          <th>Activity</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>
-                            <code>5/23/2016</code>
-                          </td>
-                          <td>Payment for VPS2 completed</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <code>5/23/2016</code>
-                          </td>
-                          <td>Logged in to the Account at 16:33:01</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <code>5/22/2016</code>
-                          </td>
-                          <td>Logged in to the Account at 09:41:58</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <code>5/21/2016</code>
-                          </td>
-                          <td>Logged in to the Account at 17:16:32</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <code>5/18/2016</code>
-                          </td>
-                          <td>Logged in to the Account at 22:53:41</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
+
+                    <p class="">Ici afficher les infos de l'utilisateur connecté avec la possibilité de les modifier.</p>
+
+
 
                   </div>
                   <div class="tab-content clearfix" id="tab-posts" *ngSwitchCase="2">
@@ -99,26 +52,11 @@
                         <div class="ipost clearfix">
                           <div class="row clearfix">
                             <div class="col-sm-4">
-                              <div class="entry-image">
-                                <a href="../../assets/images/portfolio/full/17.jpg" data-lightbox="image"><img
-                                  class="image_fade" src="../../assets/images/blog/grid/17.jpg"
-                                  alt="Standard Post with Image"></a>
-                              </div>
+
                             </div>
-                            <div class="col-sm-8">
-                              <div class="entry-title">
-                                <h3><a href="blog-single.html">This is a Standard post with a Preview Image</a></h3>
-                              </div>
-                              <ul class="entry-meta clearfix">
-                                <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                                <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                                <li><a href="#"><i class="icon-camera-retro"></i></a></li>
-                              </ul>
-                              <div class="entry-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod
-                                  est tenetur in.</p>
-                              </div>
-                            </div>
+
+                              Ici développer le calendrier
+
                           </div>
                         </div>
                       </div>
@@ -329,23 +267,23 @@
 
           <div class="list-group">
             <a href="#" class="list-group-item clearfix">Profile <i class="icon-user pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Servers <i class="icon-laptop2 pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Messages <i class="icon-envelope2 pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Billing <i class="icon-credit-cards pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Settings <i class="icon-cog pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix" (click)="onClick($event)">Logout <i class="icon-line2-logout pull-right"></i></a>
+            <a href="#" class="list-group-item clearfix">Demandes<i class="icon-laptop2 pull-right"></i></a>
+            <a href="#" class="list-group-item clearfix">Jobs<i class="icon-laptop2 pull-right"></i></a>
+            <a href="#" class="list-group-item clearfix">Configuration<i class="icon-cog pull-right"></i></a>
+            <a href="#" class="list-group-item clearfix" (click)="onClick($event)">Déconnexion<i class="icon-line2-logout pull-right"></i></a>
           </div>
 
           <div class="fancy-title topmargin title-border">
-            <h4>About Me</h4>
+            <h4>A propos de moi</h4>
           </div>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum laboriosam, dignissimos veniam obcaecati.
-            Quasi eaque, odio assumenda porro explicabo laborum!</p>
+          <p>{{user.about}}</p>
 
           <div class="fancy-title topmargin title-border">
             <h4>Social Profiles</h4>
           </div>
+
+
 
           <a href="#" class="social-icon si-facebook si-small si-rounded si-light" title="Facebook">
             <i class="icon-facebook"></i>
@@ -386,4 +324,3 @@
   </div>
 
 </section><!-- #content end -->
-

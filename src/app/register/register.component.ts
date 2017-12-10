@@ -19,7 +19,6 @@ console.log('`Register` component loaded asynchronously');
 declare var google: any;
 
 @Component({
-  //moduleId: module.id,
   selector: 'register-user',
   styleUrls: ['./forms.css'],
   templateUrl: './register.component.html',
@@ -29,14 +28,14 @@ declare var google: any;
 export class RegisterComponent implements OnInit {
   talents: Talent[];
   user: User;
-  submitted = false
-  localState: any;
+  submitted = false;
   errorMessage: String;
   myOptions: any[];
   token: String;
   user2: User;
   registerForm: FormGroup;
-  cb1: Boolean
+  cb1: Boolean;
+  isJobListReady: Boolean;
   public jobTypes: Array<any>;
 
 
@@ -44,11 +43,10 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
               private talentService: TalentService,
               private __loader: MapsAPILoader,
-              private __zone: NgZone,
-              private fb: FormBuilder
+              private __zone: NgZone
               ) {
     this.cb1 = false;
-
+    this.isJobListReady = false;
   }
 
   ngOnInit(){
@@ -72,12 +70,6 @@ export class RegisterComponent implements OnInit {
   get password() { return this.registerForm.get('password'); }
   get address() { return this.registerForm.get('address'); }
   get email() { return this.registerForm.get('email'); }
-
-
-  ngAfterViewChecked() {
-  //  this.formChanged();
-  }
-
 
 
 
@@ -130,8 +122,13 @@ export class RegisterComponent implements OnInit {
   getTalents(){
     this.talentService.getAll()
       .subscribe(
-        talents => this.jobTypes = talents,
-        error => this.errorMessage = <any>error);
+        talents => {
+          this.jobTypes = talents;
+          this.isJobListReady = true;
+
+        },
+            error => this.errorMessage = <any>error
+      );
 
   }
 
@@ -144,6 +141,7 @@ export class RegisterComponent implements OnInit {
       else { optionModel.selected = false; }
     }
   }
+
 
   /**
    * TODO: refactor to mutualize code with autocomplete of create-job

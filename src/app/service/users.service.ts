@@ -17,7 +17,7 @@ export class UserService {
   private apiEndPoint = 'api/users/';
   private apiUrl;
   private mockDataUrl;
-  private mode = DATA_SOURCE.BACK_END_API
+  private mode = DATA_SOURCE.BACK_END_API;
   constructor(@Inject(APP_CONFIG) private config: AppConfig, private http: Http) {
     // Base URL for Talented API
     this.apiUrl = config.apiUrl;
@@ -40,7 +40,7 @@ export class UserService {
     var url = '';
     switch(this.mode) {
       case DATA_SOURCE.BACK_END_API:
-        url = this.apiUrl + this.apiEndPoint;
+        url = this.apiUrl + this.apiEndPoint + endUrl;
         break;
       default :
         url = 'http://localhost:4200/api/users/' + endUrl;

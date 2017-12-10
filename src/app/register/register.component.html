@@ -29,7 +29,6 @@
         </div>
 
 
-       <!-- <form [formGroup]="registerForm" #formDir="ngForm">-->
 
       <div [hidden]="user2">
 
@@ -48,10 +47,7 @@
               </div>
               <div *ngIf="username.errors.minlength">
                 {{formErrors.username.minlength}}
-              </div><!--
-                <div *ngIf="firstname.errors.forbiddenName">
-                  Name cannot be Bob.
-                </div>-->
+              </div>
             </div>
           </div>
 
@@ -136,18 +132,15 @@
             </div>
           </div>
 
-          <!--
-          <mat-selection-list >
-            <mat-list-option *ngFor="let job of jobTypes">
-              {{job}}
-            </mat-list-option>
-          </mat-selection-list> -->
 
           <div class="form-group">
             <label>Les services que vous voulez rendre</label>
             <div *ngFor="let job of jobTypes">
+              <input  type="checkbox" [checked]="true">
+              <label  >{{job.name}}</label>
+              <!-- TODO: style empeche de cocher/decocher la checkbox
               <input  class="checkbox-style"  type="checkbox" [checked]="true">
-              <label  class="checkbox-style-3-label">{{job.name}}</label>
+              <label  class="checkbox-style-3-label">{{job.name}}</label> -->
             </div>
 
           </div>
@@ -161,185 +154,7 @@
         <div [hidden]="!user2" class="fancy-title title-dotted-border title-center">
           <h2><span>Votre compte a bien été créé</span></h2>
         </div>
-<!--
-            <div class="form-group">
 
-              <label for="lastname">Prénom</label>
-              <input id="lastname" class="form-control"
-                     formControlName="lastname" required>
-
-              <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
-                   class="alert alert-danger">
-
-                <div *ngIf="lastname.errors.required">
-                  Name is required.
-                </div>
-                <div *ngIf="lastname.errors.minlength">
-                  Name must be at least 4 characters long.
-                </div>
-                <div *ngIf="lastname.errors.forbiddenName">
-                  Name cannot be Bob.
-                </div>
-              </div>
-
-            </div>
-
-            <div class="form-group">
-              <label for="lastname">Nom</label>
-              <input id="lastname" class="form-control"
-                     formControlName="lastname">
-              <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
-                   class="alert alert-danger">
-
-                <div *ngIf="lastname.errors.required">
-                  Name is required.
-                </div>
-                <div *ngIf="lastname.errors.minlength">
-                  Name must be at least 4 characters long.
-                </div>
-                <div *ngIf="lastname.errors.forbiddenName">
-                  Name cannot be Bob.
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Mail</label>
-              <input id="email" class="form-control" formControlName="email">
-              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-
-                <div *ngIf="email.errors.required">Mail is required.</div>
-                <div *ngIf="email.errors.email">L'adresse mail n'est pas correct</div>
-              </div>
-            </div>
--->
-<!--
-            <button type="submit" class="btn btn-default"
-                    [disabled]="heroForm.invalid">Submit
-            </button>
-            <button type="button" class="btn btn-default"
-                    (click)="formDir.resetForm({})">Reset
-            </button>
-        <!--  </div>
-            </form>-->
-
-        <!--
-
-               <div [hidden]="submitted" class="acc_content clearfix">
-
-                 <div class="col_full">
-                   <label>Prénom:</label>
-                   <input formControlName="username" class="form-control">
-                 </div>
-                 <div *ngIf="username.errors" class="alert alert-danger">
-                   saisir nom
-                 </div>
-
-                 <div  class="form-group" (ngSubmit)="onSubmit(f.value)" >
-
-                   <input id="email" formControlName="email"  class="form-control">
-                   <span *ngIf="email.errors.email" class="alert alert-danger">
-                     Please enter the correct email, this email not valid.
-                   </span>
-                 </div>
-
-
-                 <form id="register-form" name="register-form" class="nobottommargin" action="#" method="post"
-                       (ngSubmit)="onSubmit()" #registerForm="ngForm">
-
-                   <div class="col_full">
-                     <label for="register-form-fname">Prénom:</label>
-                     <input type="text" id="register-form-fname" name="register-form-name" class="form-control"
-                            required minlength="4" maxlength="24"
-                            [(ngModel)]="user.firstName" name="firstName"/>
-                   </div>
-                   <div *ngIf="formErrors.firstName" class="alert alert-danger">
-                     {{formErrors.firstName}}
-                   </div>
-
-                   <div class="col_full">
-                     <label for="register-form-lname">Nom:</label>
-                     <input type="text" id="register-form-lname" name="register-form-name" class="form-control"
-                            required minlength="3" maxlength="24"
-                            [(ngModel)]="user.lastName" name="lastName"/>
-                   </div>
-                   <div *ngIf="formErrors.lastName" class="alert alert-danger">
-                     {{formErrors.lastName}}
-                   </div>
-
-
-                   <div class="col_full">
-                     <label for="register-form-email">Email:</label>
-                     <input type="email" id="register-form-email" name="register-form-email" value="" class="form-control"
-                            [(ngModel)]="user.email" required/>
-                   </div>
-                   <div *ngIf="formErrors.email" class="alert alert-danger">
-                     {{formErrors.email}}
-                   </div>
-
-
-                   <div class="col_full">
-                     <label for="register-form-address">Adresse</label>
-                     <input type="text" id="register-form-address" name="register-form-phone" value="" class="form-control"
-                            [(ngModel)]="user.address"/>
-                   </div>
-
-                   <div class="col_full">
-                     <label for="register-form-username">Username</label>
-                     <input type="text" id="register-form-username" name="register-form-username" value=""
-                            class="form-control" [(ngModel)]="user.userName" required/>
-                   </div>
-                   <div *ngIf="formErrors.userName" class="alert alert-danger">
-                     {{user.userName}}
-                   </div>
-
-                   <div class="col_full">
-                     <label for="register-form-talents">Les services que vous voulez rendre</label>
-                     <select id="register-form-talents"  (change)="setSelectedTalents($event.target)" multiple>
-                       <option *ngFor="let talent of talents" [value]="talent.name" [(ngModel)]="user.talent" name="talent">
-                         {{talent.name}}
-                       </option>
-                     </select>
-                   </div>
-                   <!--
-                                           <div class="col_full">
-                                             <div><label for="register-form-jobtype">Jobs your willing to do:</label></div>
-                                             <select id="register-form-jobtype" class="selectpicker" id="jobType" required [(ngModel)]="user.jobType"
-                                                     name="jobType" multiple>
-                                               <option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</option>
-                                             </select>
-                                           </div>
-
-                              <div class="form-group">
-                                <label for="register-form-jobtype">Jobs your willing to do:</label>
-                                <select id="register-form-jobtype" class="form-control"
-                                        name="jobType"
-                                        [(ngModel)]="user.jobType" required multiple>
-                                  <option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</option>
-                                </select>
-                              </div>
-                       -->
-        <!--
-            <div class="col_full">
-              <label for="register-form-password">Mot de passe:</label>
-              <input type="password" id="register-form-password" name="register-form-password" value=""
-                     class="form-control" [(ngModel)]="user.password" required/>
-            </div>
-
-            <div class="col_full">
-              <label for="register-form-repassword">Confirmez votre mot de passe:</label>
-              <input type="password" id="register-form-repassword" name="register-form-repassword" value=""
-                     class="form-control" required/>
-            </div>
-
-            <div class="col_full nobottommargin">
-              <button type="submit" [disabled]="!registerForm.form.valid" class="button button-3d button-black nomargin"
-                      id="register-form-submit"
-                      name="register-form-submit" value="register">Devenir TalentWorker
-              </button>
-            </div>
-          </form>
-          -->
       </div>
 
     </div>
