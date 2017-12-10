@@ -42,6 +42,8 @@ import {CreateJobComponent} from "./create-job/create-job.component";
 import {ListUsersSearchComponent} from "./list-users-search/list-users-search.component";
 import {ListUsersComponent} from "./list-users-search/list-users/list-users.component";
 import {JobComponent} from "./job/job.component";
+import {ScheduleOptimizerComponent} from "./schedule-optimizer/schedule-optimizer.component";
+import {TalentWorkerComponent} from "./talent-worker/talent-worker.component";
 
 
 
@@ -58,7 +60,9 @@ import {JobComponent} from "./job/job.component";
     ListJobsComponent,
     ListUsersSearchComponent,
     ListUsersComponent,
-    JobComponent
+    JobComponent,
+    ScheduleOptimizerComponent,
+    TalentWorkerComponent
 
   ],
   imports: [

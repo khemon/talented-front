@@ -19,7 +19,7 @@
         <a (click)="isDropdownOpen = !isDropdownOpen;"
            class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          <li><a [routerLink]=" ['./profile']" (click)="isDropdownOpen = !isDropdownOpen;" >Profile</a></li>
+          <li><a [routerLink]=" ['./profile']" (click)="isDropdownOpen = !isDropdownOpen;" >Profil</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#" (click)="isDropdownOpen = !isDropdownOpen; logout()">Déconnexion <i class="icon-signout"></i></a></li>
         </ul>
@@ -37,6 +37,7 @@
           <li *ngIf=!this.auth.isAuthenticated()><a [routerLink]=" ['./login'] "><div>S'identifier</div></a></li>
           <li ><a [routerLink]=" ['./list-jobs'] "><div>Proposer mon aide</div></a></li>
           <li><a [routerLink]=" ['./list-users-search'] "><div>les workers</div></a></li>
+          <li ><a [routerLink]=" ['./schedule-optimizer'] "><div>Planning</div></a></li>
         </ul>
 
         <!-- Top Cart
