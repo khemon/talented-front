@@ -24,7 +24,8 @@ export class ScheduleOptimizerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(){
-
+    this.dateDebut = new Date();
+    this.dateFin = new Date();
   }
 
 }

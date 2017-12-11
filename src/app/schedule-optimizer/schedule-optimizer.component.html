@@ -1,6 +1,6 @@
 <!-- Page Title
 		============================================= -->
-<script src="../../../../talented_front_angular/src/app/list-jobs/list-jobs.component.ts"></script>
+
 <section id="page-title" class="page-title-mini">
 
   <div class="container clearfix">
@@ -12,14 +12,46 @@
   </div>
 
 </section><!-- #page-title end -->
-
+<!-- Include Date Range Picker -->
 <!-- Content
 		============================================= -->
 <section id="content">
 
   <div class="content-wrap">
     <div class="container clearfix" >
+
+      <form action="#" method="post" class="nobottommargin">
+        <div class="input-daterange travel-date-group bottommargin-sm" >
+        <div class="row">
+          <div class="col-sm-6 bottommargin-sm">
+            <input type="date" [(ngModel)]="dateDebut" name="date" class="sm-form-control tleft today">
+          </div>
+          <div class="col-sm-6 bottommargin-sm">
+            <input type="date" [(ngModel)]="dateFin" name="date" class="sm-form-control tleft today">
+          </div>
+        </div>
       </div>
+        <div>
+        <span>Distance max</span><mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
+        </div>
+        <span class="button btn-info">Recherche</span>
+      </form>
+<!-- DATE AND TIME PICKER NOT WORKING CANVAS
+        <div class="col-sm-6 bottommargin-sm">
+          <label >Date Range</label>
+          <div class="input-daterange input-group">
+            <input type="text" value="" class="sm-form-control tleft" placeholder="MM/DD/YYYY">
+            <span class="input-group-addon">to</span>
+            <input type="text" value="" class="sm-form-control tleft" placeholder="MM/DD/YYYY">
+          </div>
+        </div>
+
+      <div class="col-md-6 bottommargin">
+        <label>Date and Time Range Picker:</label>
+        <input type="text" class="sm-form-control daterange2" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+      </div>-->
+
+    </div>
   </div>
 
 </section><!-- #content end -->

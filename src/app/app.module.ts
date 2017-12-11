@@ -44,7 +44,7 @@ import {ListUsersComponent} from "./list-users-search/list-users/list-users.comp
 import {JobComponent} from "./job/job.component";
 import {ScheduleOptimizerComponent} from "./schedule-optimizer/schedule-optimizer.component";
 import {TalentWorkerComponent} from "./talent-worker/talent-worker.component";
-
+import 'hammerjs';
 
 
 @NgModule({
