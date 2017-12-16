@@ -57,6 +57,7 @@ export class ScheduleOptimizerComponent{
 
 
   adviseNewSchedule(){
+    this.displayPlanning = false;
     let userId = JSON.parse(localStorage.getItem('currentUser')).id;
 
     this.scheduleAdvisorService.getCustomJobSchedule(userId, this.distanceMax)
