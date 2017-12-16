@@ -21,21 +21,37 @@
     <div class="container clearfix" >
 
       <form action="#" method="post" class="nobottommargin">
-        <div class="input-daterange travel-date-group bottommargin-sm" >
+        <!--<div class="input-daterange travel-date-group bottommargin-sm" >
         <div class="row">
+
           <div class="col-sm-6 bottommargin-sm">
-            <input type="date" [(ngModel)]="dateDebut" name="date" class="sm-form-control tleft today">
+            <input type="date" [(ngModel)]="startDate" name="date" class="sm-form-control tleft today">
           </div>
           <div class="col-sm-6 bottommargin-sm">
-            <input type="date" [(ngModel)]="dateFin" name="date" class="sm-form-control tleft today">
+            <input type="date" [(ngModel)]="endDate" name="date" class="sm-form-control tleft today">
           </div>
         </div>
-      </div>
+      </div>-->
         <div>
-        <span>Distance max</span><mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
+
+        <label>Distance max (km)</label>
+          <mat-slider [value]="distanceMax"
+                      tickInterval="1"
+                      min="1"
+                      max="100"
+                      step="1"
+                      thumb-label= true>
+
+          </mat-slider>
         </div>
-        <span class="button btn-info">Recherche</span>
+        <span class="button btn-info" (click)="adviseNewSchedule()">Optimiser mon planning</span>
       </form>
+
+      <div *ngIf="displayPlanning">
+        <div class="divider divider-short divider-rounded divider-center"><i class="icon-calendar"></i></div>
+        <calendar [events]="calEvents"></calendar>
+      </div>
+
 <!-- DATE AND TIME PICKER NOT WORKING CANVAS
         <div class="col-sm-6 bottommargin-sm">
           <label >Date Range</label>

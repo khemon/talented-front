@@ -5,6 +5,7 @@ import {Talent} from "../model/talent";
 // Mock Data
 import * as talents from 'assets/mock-data/talents.json';
 import * as jobs from 'assets/mock-data/jobs.json';
+import * as planning from 'assets/mock-data/planning.json';
 import * as users from '../../assets/mock-data/users.json';
 import * as user from '../../assets/mock-data/connectedUserTest.json';
 
@@ -93,7 +94,16 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
 
           }
-          break;
+
+          // Schedule advisor
+          else if (connection.request.url.endsWith('api/schedule-advisor/custom')) {
+            alert(params.maxDistance + ' ' + params.userId);
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200,
+              body: planning
+            })));
+          }
+            break;
         case RequestMethod.Get:
           if (connection.request.url.endsWith('api/talents/')) {
               connection.mockRespond(new Response(new ResponseOptions({

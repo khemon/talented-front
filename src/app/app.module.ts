@@ -31,7 +31,7 @@ import {APP_CONFIG, TALENTED_DI_CONFIG } from './app-config'
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule, NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
 import {AlertService} from "./service/alert.service";
 import {AuthenticationService} from "./service/authentication.service";
 import {AuthGuard} from "./_guards/auth.guard";
@@ -45,6 +45,9 @@ import {JobComponent} from "./job/job.component";
 import {ScheduleOptimizerComponent} from "./schedule-optimizer/schedule-optimizer.component";
 import {TalentWorkerComponent} from "./talent-worker/talent-worker.component";
 import 'hammerjs';
+import {CalendarModule} from "angular-calendar";
+import {CalendarComponent} from "./calendar/calendar.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -62,7 +65,8 @@ import 'hammerjs';
     ListUsersComponent,
     JobComponent,
     ScheduleOptimizerComponent,
-    TalentWorkerComponent
+    TalentWorkerComponent,
+    CalendarComponent
 
   ],
   imports: [
@@ -75,6 +79,9 @@ import 'hammerjs';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgbModalModule.forRoot(),
+    CalendarModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD5LiWnQoVNvjT7H1w2Omzyleyx8r-3b-Y',
       libraries: ['places'],
