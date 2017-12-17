@@ -69,6 +69,19 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  /**
+   * Retourne les commetaires de Id du user
+   */
+  getReviews(id: string): Observable<any[]>{
+    let userId = JSON.stringify(id);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    var url = this.postBaseUrl('reviews') ;
+    return this.http.post(url, userId, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
 
   /**
    * TODO:

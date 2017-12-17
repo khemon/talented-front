@@ -8,6 +8,7 @@ import * as jobs from 'assets/mock-data/jobs.json';
 import * as planning from 'assets/mock-data/planning.json';
 import * as users from '../../assets/mock-data/users.json';
 import * as user from '../../assets/mock-data/connectedUserTest.json';
+import * as reviews from '../../assets/mock-data/userReviews.json';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
 
@@ -66,8 +67,15 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
               status: 200,
               body: { message: 'Candidature prise en compte'}
             })));
+          }
 
-
+          // Reviews from Id
+          else if (connection.request.url.endsWith('api/users/reviews')) {
+            var parsedReviews = JSON.parse(JSON.stringify(reviews));
+            connection.mockRespond(new Response(new ResponseOptions({
+              status: 200,
+              body: parsedReviews
+            })));
           }
           // authenticate end point
           else if (connection.request.url.endsWith('api/authenticate/')) {
