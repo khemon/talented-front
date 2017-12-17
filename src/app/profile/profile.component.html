@@ -27,27 +27,58 @@
 
               <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
-                <ul class="tab-nav clearfix">
-                  <li><a (click)="tab=1"><i class="icon-pencil2"></i>Profil</a></li>
-                  <li><a (click)="tab=2"><i class="icon-reply"></i>Agenda</a></li>
-                  <li><a (click)="tab=3"><i class="icon-users"></i>Avis</a></li>
-                </ul>
-
                 <div class="tab-container" [ngSwitch]="tab">
 
                   <div class="tab-content clearfix" id="tab-feeds" *ngSwitchCase="1">
+                    <div class="panel panel-default nbottommargin">
+                      <div class="panel-body" style="padding:40px">
+                        <form>
 
-                    <p class="">Ici afficher les infos de l'utilisateur connecté avec la possibilité de les modifier.</p>
-                    <div class="col_one_third nobottommargin">
+                          <div class="col_half">
+                            <label >Prénom<small>*</small></label>
+                            <input type="text" value="" class="sm-form-control required" />
+                          </div>
 
-                      <ul class="sidenav">
-                        <li class="ui-tabs-active"><a href="#snav-content1"><i class="icon-screen"></i>Responsive Layout<i class="icon-chevron-right"></i></a></li>
-                        <li><a href="#snav-content2"><i class="icon-magic"></i>Retina Ready Display<i class="icon-chevron-right"></i></a></li>
-                        <li><a href="#snav-content3"><i class="icon-tint"></i>Unlimited Color Options<i class="icon-chevron-right"></i></a></li>
-                        <li><a href="#snav-content4"><i class="icon-gift"></i>Bootstrap 3.1 Compatible<i class="icon-chevron-right"></i></a></li>
-                        <li><a href="#snav-content5"><i class="icon-adjust"></i>Light &amp; Dark Scheme<i class="icon-chevron-right"></i></a></li>
-                      </ul>
+                          <div class="col_half col_last">
+                            <label >Nom<small>*</small></label>
+                            <input type="text"  value="" class="sm-form-control required" />
+                          </div>
 
+                          <div class="form-group">
+                            <select class="sm-form-control" value="sexe">
+                              <option value="homme">Sexe</option>
+                              <option value="femme">Femme</option>
+                              <option value="homme">Homme</option>
+                              <option value="femme">Autre</option>
+                            </select>
+                          </div>
+
+                          <div class="col_half">
+                            <label >Login<small>*</small></label>
+                            <input type="text" value="" class="sm-form-control required" />
+                          </div>
+
+                          <div class="col_half col_last">
+                            <label >Mot de passe<small>*</small></label>
+                            <input type="password"  value="" class="sm-form-control required" />
+                          </div>
+
+                          <div class="col_half">
+                            <label >Adresse Email<small>*</small></label>
+                            <input type="email" value="" class="sm-form-control required" />
+                          </div>
+
+                          <div class="col_half col_last">
+                            <label >Numéro de téléphone<small>*</small></label>
+                            <input type="tel"  value="" class="sm-form-control required" />
+                          </div>
+
+
+
+                          <button type="submit" class="btn btn-danger">Enregistrer</button>
+
+                        </form>
+                      </div>
                     </div>
 
 
@@ -63,12 +94,11 @@
 
                             </div>
 
-                              Ici développer le calendrier
+                            Ici développer le calendrier
 
                           </div>
                         </div>
                       </div>
-
 
 
                     </div>
@@ -274,24 +304,21 @@
         <div class="col-sm-3 clearfix">
 
           <div class="list-group">
-            <a href="#" class="list-group-item clearfix">Modier le Profil<i class="icon-user pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Demandes<i class="icon-laptop2 pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Jobs<i class="icon-laptop2 pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Commentaires<i class="icon-laptop2 pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix">Configuration<i class="icon-cog pull-right"></i></a>
-            <a href="#" class="list-group-item clearfix" (click)="onClick($event)">Déconnexion<i class="icon-line2-logout pull-right"></i></a>
+
+            <ul class="sidenav">
+              <li class="ui-tabs-active"><a href="#snav-content1"><i class="icon-user pull-right"></i>Profile</a></li>
+              <li><a href="#snav-content2"><i class="icon-comment pull-right"></i>Messages</a></li>
+              <li><a href="#snav-content3"><i class="icon-tint pull-right"></i>Jobs</a></li>
+              <li><a href="#snav-content4"><i class="icon-users pull-right"></i>Avis</a></li>
+              <li><a href="#snav-content5"><i class="icon-cog pull-right"></i>Configuration</a></li>
+            </ul>
+
           </div>
 
-          <div class="fancy-title topmargin title-border">
-            <h4>A propos de moi</h4>
-          </div>
-
-          <p>{{user.about}}</p>
 
           <div class="fancy-title topmargin title-border">
             <h4>Social Profiles</h4>
           </div>
-
 
 
           <a href="#" class="social-icon si-facebook si-small si-rounded si-light" title="Facebook">
